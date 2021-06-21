@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stakater-frontend-api
+spec:
+  selector:
+      matchLabels:
+        app: stakater-frontend-api
+        tier: frontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: stakater-frontend-api
+        tier: frontend
+    spec:
+      containers:
+        - name: stakater-fe
+          image: sardarwaqasahmed/stakater-fe:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9091

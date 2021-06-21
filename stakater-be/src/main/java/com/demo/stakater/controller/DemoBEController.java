@@ -1,5 +1,8 @@
 package com.demo.stakater.controller;
 
+import java.net.UnknownHostException;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +15,13 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/api/v1")
 public class DemoBEController {
 
-
+    @Value("${name.prefix}")
+    private String name; 
+    
     @GetMapping(value = "/hello")
     @Operation(summary = "Get hello ${name}. Retrieved name from env Variable")
     @ResponseBody
-    public ResponseEntity<String> getHelloStakater() {
-        return ResponseEntity.ok("hello waqas");
+    public ResponseEntity<String> getHelloStakater() throws UnknownHostException {
+        return ResponseEntity.ok("Hello " + name);
     }
 }

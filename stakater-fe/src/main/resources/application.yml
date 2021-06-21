@@ -1,7 +1,3 @@
 server:
   servlet.context-path: /stakater-fe
   port: 9091
-
-springdoc:
-  api-docs:
-    path: /api-docs

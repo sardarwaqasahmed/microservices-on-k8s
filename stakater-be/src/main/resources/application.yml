@@ -5,3 +5,4 @@ server:
 springdoc:
   api-docs:
     path: /api-docs
+name.prefix:  Dubai # For reading if run the standalone jar or from eclipse IDE

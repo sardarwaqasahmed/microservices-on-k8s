@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stakater-frontend-api
+spec:
+  selector:
+    app: stakater-frontend-api
+    tier: frontend
+  ports:
+  - protocol: TCP
+    port: 9091
+    nodePort: 30001
+  type: NodePort

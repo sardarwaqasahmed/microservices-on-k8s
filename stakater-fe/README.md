@@ -1,4 +1,4 @@
-# stakater-backend-app
+# stakater-frontend-app
 
 ## Requirements
 
@@ -40,4 +40,9 @@ All the configurations are present in application.yml file.
 
  Future enhancements
 
-1. As this is backend api so its not expose outside k82 cluster as i used type:ClusterIP. For accessing this backend service you need to call frontend api that is exposed publically
+1. This is front end api and exposed outside k82 cluster. For accessing this front service you need to call below url
+
+```shell
+docker build -t <image-name> .
+docker run -dit --name <container-name> -p 8081:8081
+```
