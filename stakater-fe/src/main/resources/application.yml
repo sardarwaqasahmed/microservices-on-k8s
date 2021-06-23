@@ -1,3 +1,5 @@
 server:
   servlet.context-path: /stakater-fe
   port: 9091
+backend.k8s.service.dns.name: http://stakater-be-service.default.svc.cluster.local:8081
+backend.k8s.service.endpoint: /stakater-be/api/v1/hello

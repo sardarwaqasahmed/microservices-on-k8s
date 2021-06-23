@@ -1,0 +1,39 @@
+# ... Deployment YAML definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stakater-frontend-app
+spec:
+  selector:
+      matchLabels:
+        app: stakater-frontend-app
+        tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stakater-frontend-app
+        tier: frontend
+    spec:
+      containers:
+        - name: stakater-fe
+          image: sardarwaqasahmed/stakater-fe:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9091
+---
+# ... Service YAML definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: stakater-fe-service
+spec:
+  selector:
+    app: stakater-frontend-app
+    tier: frontend
+  ports:
+  - protocol: TCP
+    port: 9091
+    targetPort: 9091
+    nodePort: 30035
+  type: NodePort

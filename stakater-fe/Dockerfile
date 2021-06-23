@@ -1,9 +1,10 @@
 FROM openjdk:8-jdk-alpine
-ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
-    WAIT_TIME=0 \
-    JAVA_OPTS=""
-VOLUME /stakater-fe-service
+RUN apk add --no-cache --upgrade bash
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} /stakater-fe-service/stakater-fe.jar
-ENTRYPOINT ["java","-jar","/stakater-fe-service/stakater-fe.jar"]
-EXPOSE 9091
+
+RUN mkdir -p /usr/local/stakater-fe-service
+
+ADD ${JAR_FILE} /usr/local/stakater-fe-service
+ADD docker/run.sh run.sh
+RUN chmod +x run.sh
+CMD ./run.sh

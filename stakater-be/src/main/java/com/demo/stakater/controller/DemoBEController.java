@@ -22,6 +22,7 @@ public class DemoBEController {
     @Operation(summary = "Get hello ${name}. Retrieved name from env Variable")
     @ResponseBody
     public ResponseEntity<String> getHelloStakater() throws UnknownHostException {
-        return ResponseEntity.ok("Hello " + name);
+        System.out.println("I am in Backend Microservice");
+    	return ResponseEntity.ok("Hello " + name);
     }
 }

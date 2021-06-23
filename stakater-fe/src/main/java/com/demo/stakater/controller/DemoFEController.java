@@ -4,6 +4,7 @@ import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,23 @@ import com.demo.stakater.model.DateTimeFormatEnum;
 @RequestMapping("/api/v1")
 public class DemoFEController {
 
-    
+	@Value("${backend.k8s.service.dns.name}")
+    private String backendServiceDNSName;
+	
+	@Value("${backend.k8s.service.endpoint}")
+	private String backendServiceEndPoint;
+	
     @GetMapping(value = "/print")
 	public String helloWorld() throws UnknownHostException {
 
+    	System.out.println("I am in Front End Micro service");
 		RestTemplate restTemplate = new RestTemplate();
-		String resourceUrl = "http://stakater-be-api:8081/stakater-be/api/v1/hello";
+		StringBuilder resourceUrl = new StringBuilder();
+		resourceUrl.append(backendServiceDNSName).append(backendServiceEndPoint);
 		String dateTime = formatDateTime(LocalDateTime.now(), DateTimeFormatEnum.YYYY_MM_DD_HH_MM_SS);
-		ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl, String.class);
-		return dateTime + response.getBody();
+		System.out.println("Going to lookup Backend K8s service on Pod " + resourceUrl.toString());
+		ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl.toString(), String.class);
+		return dateTime + " " +response.getBody();
 	}
     
 	private String formatDateTime(LocalDateTime dateTime, DateTimeFormatEnum dateTimeFormatEnum) {
