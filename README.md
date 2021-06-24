@@ -95,22 +95,27 @@ This will create 2 deployments with 2 pods. 1 pod for front-end service and 1 po
 kubectl get all
 
 # display deployments/pods/services deployed on k8s
+NAME                                    READY   STATUS    RESTARTS   AGE
+stakater-be-app-7bdf45d545-6g8v4        1/1     Running   0          13s
+stakater-frontend-app-76bc4cdcc-26h7x   1/1     Running   0          13s
+
+D:\Bitbucket\POC\stakater>kubectl get all
 NAME                                        READY   STATUS    RESTARTS   AGE
-pod/stakater-be-app-7bdf45d545-vrkbw        1/1     Running   0          11s
-pod/stakater-frontend-app-76bc4cdcc-pdwnc   1/1     Running   0          11s
+pod/stakater-be-app-7bdf45d545-6g8v4        1/1     Running   0          17s
+pod/stakater-frontend-app-76bc4cdcc-26h7x   1/1     Running   0          17s
 
 NAME                          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-service/kubernetes            ClusterIP   10.96.0.1        <none>        443/TCP          5d8h
-service/stakater-be-service   NodePort    10.109.205.162   <none>        8081:30036/TCP   11s
-service/stakater-fe-service   NodePort    10.97.29.206     <none>        9091:30035/TCP   11s
+service/kubernetes            ClusterIP   10.96.0.1        <none>        443/TCP          5d9h
+service/stakater-be-service   ClusterIP   10.101.181.241   <none>        8081/TCP         17s
+service/stakater-fe-service   NodePort    10.107.66.113    <none>        9091:30035/TCP   17s
 
 NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/stakater-be-app         1/1     1            1           11s
-deployment.apps/stakater-frontend-app   1/1     1            1           11s
+deployment.apps/stakater-be-app         1/1     1            1           17s
+deployment.apps/stakater-frontend-app   1/1     1            1           17s
 
 NAME                                              DESIRED   CURRENT   READY   AGE
-replicaset.apps/stakater-be-app-7bdf45d545        1         1         1       11s
-replicaset.apps/stakater-frontend-app-76bc4cdcc   1         1         1       11s
+replicaset.apps/stakater-be-app-7bdf45d545        1         1         1       17s
+replicaset.apps/stakater-frontend-app-76bc4cdcc   1         1         1       17s
 ```
 
 
