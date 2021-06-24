@@ -99,7 +99,7 @@ NAME                                    READY   STATUS    RESTARTS   AGE
 stakater-be-app-7bdf45d545-6g8v4        1/1     Running   0          13s
 stakater-frontend-app-76bc4cdcc-26h7x   1/1     Running   0          13s
 
-D:\Bitbucket\POC\stakater>kubectl get all
+kubectl get all
 NAME                                        READY   STATUS    RESTARTS   AGE
 pod/stakater-be-app-7bdf45d545-6g8v4        1/1     Running   0          17s
 pod/stakater-frontend-app-76bc4cdcc-26h7x   1/1     Running   0          17s
@@ -137,7 +137,7 @@ http://127.0.0.1:59484/stakater-fe/api/v1/print
 # output:
 2021-06-24 20:51:49 Hello Waqas-Ahmed
 
-# above output is combination of DataTime plus String Hello &NAME_PREFIX ENV var. The ENV variable is read from stakater-be-app manifest file and pass to stakater-be-app container.
+# above output is combination of DataTime plus String Hello $NAME_PREFIX ENV var. The ENV variable is read from stakater-be-app manifest file and pass to stakater-be-app container.
 Front end service is consuming the backend service and return the concated response back to the client.
 
 
