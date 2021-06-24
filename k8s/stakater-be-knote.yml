@@ -36,7 +36,5 @@ spec:
     tier: backend
   ports:
   - protocol: TCP
-    port: 8081
-    targetPort: 8081
-    nodePort: 30036
-  type: NodePort
+    port: 8081    
+  type: ClusterIP
