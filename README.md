@@ -137,3 +137,16 @@ Front end service is consuming the backend service and return the concated respo
 
 
 ```
+# Clear the resources
+Issue the below command in order to delete all the created resources i.e deployment, pods, container, replicaset etc
+```bash
+
+kubectl delete -f k8s
+# output:
+deployment.apps "stakater-be-app" deleted
+service "stakater-be-service" deleted
+deployment.apps "stakater-frontend-app" deleted
+service "stakater-fe-service" deleted
+
+
+```
