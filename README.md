@@ -1,4 +1,4 @@
-# Stakater-Assignment
+# Microservices-Assignment
 ## Overview
 This repo contains task, which will help you start working with Kubernetes (k8s). There are two services that are running on two different pods in k8s cluster. FrontService is calling Backend service using DNS service name. 
 
